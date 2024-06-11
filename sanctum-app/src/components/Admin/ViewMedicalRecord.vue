@@ -49,7 +49,7 @@ export default {
     };
   },
   mounted() {
-    this.getAllMedicalRecords();
+    this.fetchMedicals();
   },
   components: {
     HeaderPage,
@@ -57,15 +57,15 @@ export default {
     ViewMedicalRecord,
   },
   methods: {
-    async getAllMedicalRecords() {
-      await this.$store.dispatch("getAllMedicalRecords");
+    async fetchMedicals() {
+      await this.$store.dispatch("fetchMedicals");
     },
     viewRecord(id) {
       this.$store.getters.getMedicalRecord(id);
       this.showViewRecordModal = !this.showViewRecordModal;
 
       if (this.showViewRecordModal == false) {
-        this.$store.dispatch("getAllMedicalRecords");
+        this.$store.dispatch("fetchMedicals");
       }
     },
   },
@@ -85,4 +85,8 @@ export default {
 #record .record-con {
   padding: 100px 20px 100px 100px;
 }
+<<<<<<< HEAD
 </style>
+=======
+</style>
+>>>>>>> 8ce40e8bea2e29e11d27bd12e0c118d510ee9d58

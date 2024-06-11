@@ -109,9 +109,6 @@ class AppointmentController extends Controller
         $appointment = $this->appointments->find($id);
         $patient = $this->patient->where('user_id', $appointment->user_id)->first();
 
-        if (!$patient)
-            return response()->json(['message' => 'Patient no record, Please register this patient.'], 404);
-
         $appointment->update([
             'status' => 3
         ]);

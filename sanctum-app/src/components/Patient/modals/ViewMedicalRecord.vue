@@ -41,8 +41,8 @@
     </div>
   </div>
 </template>
-      
-  <script>
+
+<script>
 export default {
   name: "ViewMedicalRecord",
   data() {

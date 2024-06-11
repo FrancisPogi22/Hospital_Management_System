@@ -41,8 +41,8 @@
     </div>
   </div>
 </template>
-
-<script>
+        
+    <script>
 export default {
   name: "ViewMedicalRecord",
   data() {
@@ -75,8 +75,8 @@ export default {
   },
 };
 </script>
-
-<style scoped>
+  
+  <style scoped>
 #viewMedical .modal-body h4,
 #viewMedical .modal-body h6 {
   color: var(--global-color-primary);
