@@ -92,11 +92,11 @@ class PatientController extends Controller
         ]);
 
         $patient = $this->users->find($id);
-        $patientdata = $this->patient->where('user_id', $id)->first();
-
         if (!$patient) {
             return response()->json(['message' => 'Patient not found'], 404);
         }
+
+        $patientdata = $this->patient->where('user_id', $id)->first();
 
         $patient->update([
             'fullname' => $request->fullname,
@@ -105,11 +105,20 @@ class PatientController extends Controller
             'email' => $request->email,
         ]);
 
-        $patientdata->update([
-            'birthday' => $request->birthday,
-            'weight' => $request->weight,
-            'height' => $request->height,
-        ]);
+        if ($patientdata) {
+            $patientdata->update([
+                'birthday' => $request->birthday,
+                'weight' => $request->weight,
+                'height' => $request->height,
+            ]);
+        } else {
+            $this->patient->create([
+                'user_id' => $patient->id,
+                'birthday' => $request->birthday,
+                'weight' => $request->weight,
+                'height' => $request->height,
+            ]);
+        }
 
         return response()->json(['message' => 'Successfully Edited.'], 200);
     }

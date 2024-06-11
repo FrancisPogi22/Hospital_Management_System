@@ -8,18 +8,16 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('patient', function (Blueprint $table) {
+        Schema::create('doctor', function (Blueprint $table) {
             $table->id();
-            $table->date('birthday');
+            $table->string('type');
             $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('weight');
-            $table->string('height');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('patient');
+        Schema::dropIfExists('doctor');
     }
 };

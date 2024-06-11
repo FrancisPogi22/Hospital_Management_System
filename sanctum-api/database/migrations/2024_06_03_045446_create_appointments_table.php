@@ -8,18 +8,19 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('patient', function (Blueprint $table) {
+        Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->date('birthday');
             $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('weight');
-            $table->string('height');
+            $table->foreignId('doctor_id')->references('id')->on('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('type');
+            $table->tinyInteger('status');
+            $table->date('date');
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('patient');
+        Schema::dropIfExists('appointments');
     }
 };
